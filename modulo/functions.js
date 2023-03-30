@@ -219,7 +219,7 @@ const getStudentsCourseEspecific = function ($siglaCourse) {
         return status
     }
 }
-//getStudentsCourseEspecific('ds')
+//console.log(getStudentsCourseEspecific('ds'))
 
 const getStudentsStatusEspecific = function ($status) {
     const allStudentsJson = {}
@@ -229,7 +229,7 @@ const getStudentsStatusEspecific = function ($status) {
     students.forEach(function ($course) {
         if ($status.toUpperCase() == $course.status.toUpperCase()) {
                 status = true
-                infStudent = {
+               let infStudent = {
                     foto: $course.foto,
                     nome: $course.nome,
                     matricula: $course.matricula,
@@ -273,11 +273,179 @@ const getStudentsStatusEspecific = function ($status) {
     }
 }
 //console.log(getStudentsStatusEspecific('Finalizado'))
+
+/***************************************************************************************
+ * Funções extras para uso no Front-end
+ ***************************************************************************************/
+
+const studentSelectedInfGrades = function($nameStudent){
+    const studentSelectedJson = {}
+    const studentSelectedArray = []
+    const infCourseArray = []
+    let status = false
+
+    students.forEach(function(student){
+        if($nameStudent.toUpperCase() == student.nome.toUpperCase()){
+            status = true
+            const studentInf = {
+                nome: student.nome,
+                foto: student.foto
+            }
+            student.curso.forEach(function(infCourse){
+                infCourse.disciplinas.forEach(function(infGrades){
+                    /**************************************************************************
+                    *O método split(' ') é usado para dividir a string em um array de palavras. 
+                    *Em seguida, usamos o método map() para iterar sobre cada palavra e retornar 
+                    *apenas o primeiro caractere, representado por word.charAt(0). 
+                    *Finalmente, usamos o método join('') para unir as iniciais em uma única string
+                    *sem espaços entre elas.
+                    **************************************************************************/
+                    let name = infGrades.nome.split(' ').map(word => word.charAt(0)).join('')
+                const infCourseJson = {
+                    nome: name.toUpperCase(),
+                    carga: infGrades.carga,
+                    media: infGrades.media,
+                    status: infGrades.status
+                }
+                infCourseArray.push(infCourseJson)
+                studentInf.disciplinas = infCourseArray
+                })
+            })
+            studentSelectedArray.push(studentInf)
+        }
+    })
+    studentSelectedJson.aluno = studentSelectedArray
+
+    if(status){
+        return studentSelectedJson
+    }else{
+        return status
+    }
+}
+//studentSelectedInfGrades('aline de Almeida campos')
+
+//Retonarna os alunos com o estado Finalizado ou Cursando do curso de Desenvolvimento
+const getStatusCourseDs = function($status){
+    const courseJson = {}
+    const courseArray = []
+    let status = false
+
+    students.forEach(function(students){
+        students.curso.forEach(function(course){
+            if($status != undefined && students.status.toUpperCase() == $status.toUpperCase() && course.sigla.toUpperCase() == 'DS'){
+                status = true
+                const studentJson = {
+                    nome: students.nome,
+                    foto: students.foto
+                }
+                courseArray.push(studentJson)
+            }
+        })
+    })
+
+    courseJson.alunos = courseArray
+    if(status){
+        return courseJson
+    }else{
+        return status
+    }
+}
+//console.log(getStatusCourse("Cursando"))
+
+//Retorna os alunos que concluiram o curso programação naquele ano
+const getConclusionCourseDs = function($year){
+    const courseJson = {}
+    const courseArray = []
+    let status = false
+
+    students.forEach(function(students){
+        students.curso.forEach(function(course){
+            if($year != undefined && course.sigla.toUpperCase() == 'DS' && course.conclusao == $year.toString()){
+                status = true
+                const studentJson = {
+                    nome: students.nome,
+                    foto: students.foto
+                }
+                courseArray.push(studentJson)
+            }
+        })
+    })
+
+    courseJson.alunos = courseArray
+    if(status){
+        return courseJson
+    }else{
+        return status
+    }
+}
+//console.log(getYearCourse('2022'))
+
+//Retonarna os alunos com o estado Finalizado ou Cursando do curso de Redes
+const getStatusCourseRDS = function($status){
+    const courseJson = {}
+    const courseArray = []
+    let status = false
+
+    students.forEach(function(students){
+        students.curso.forEach(function(course){
+            if($status != undefined && students.status == $status && course.sigla.toUpperCase() == 'RDS'){
+                status = true
+                const studentJson = {
+                    nome: students.nome,
+                    foto: students.foto
+                }
+                courseArray.push(studentJson)
+            }
+        })
+    })
+
+    courseJson.alunos = courseArray
+    if(status){
+        return courseJson
+    }else{
+        return status
+    }
+}
+//console.log(getStatusCourseRDS("Cursando"))
+
+//Retorna os alunos que concluiram o curso Redes naquele ano
+const getConclusionCourseRDS = function($year){
+    const courseJson = {}
+    const courseArray = []
+    let status = false
+
+    students.forEach(function(students){
+        students.curso.forEach(function(course){
+            if($year != undefined && course.sigla.toUpperCase() == 'RDS' && course.conclusao == $year.toString()){
+                status = true
+                const studentJson = {
+                    nome: students.nome,
+                    foto: students.foto
+                }
+                courseArray.push(studentJson)
+            }
+        })
+    })
+
+    courseJson.alunos = courseArray
+    if(status){
+        return courseJson
+    }else{
+        return status
+    }
+}
+//console.log(getConclusionCourseRDS('2020'))
+
 module.exports = {
     getInfoCourses,
     getInfoAllStudentsMatriculate,
     getNameImageAllStudents,
     getStudentMatriculation,
     getStudentsCourseEspecific,
-    getStudentsStatusEspecific
+    getStudentsStatusEspecific,
+    studentSelectedInfGrades,
+    getStatusCourseDs,
+    getConclusionCourseDs,
+    getStatusCourseRDS,
+    getConclusionCourseRDS
 }

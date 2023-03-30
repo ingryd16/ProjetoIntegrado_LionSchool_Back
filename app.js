@@ -145,7 +145,77 @@ app.get('/v1/lion-school/alunos/status', cors(), async function(request, respons
     response.json(statusStudentsJson)
 })
 
+//EndPoint para listar as Informações referentes a nota do aluno em determinada matéria
+app.get('/v1/lion-school/aluno/notas', cors(), async function(request, response, next){
+    let nameStudent = request.query.nome
+    let gradesStudent = {}
+    let statusCode
 
+    if(nameStudent == '' || nameStudent == undefined || !isNaN(nameStudent)){
+        statusCode = 400
+        gradesStudent.message = 'Não foi possivel processar a requisição pois o nome do aluno não foi informado de forma certa, tente novamente'
+    }else{
+        let listGrades = dateJson.studentSelectedInfGrades(nameStudent)
+        if(listGrades){
+            statusCode = 200
+            gradesStudent = listGrades
+        }else{
+            statusCode = 404
+            gradesStudent.message = 'Aluno não localizado, verifique e tente novamente'
+        }
+    }
+    response.status(statusCode)
+    response.json(gradesStudent)
+})
+
+//EndPoint retorna os alunos que estao cursando ou finalizarão o curso de Programming
+app.get('/v1/lion-school/alunos/status/ds', cors(), async function(request, response, next){
+    let statusCourse = request.query.status
+    let courseStatusJson = {}
+    let statusCode 
+
+    if(statusCourse == '' || statusCourse == undefined || !isNaN(statusCourse)){
+        statusCode = 400
+        courseStatusJson.message = 'Não foi possivel processar a requisição pois os status do curso não foi informado de forma certa.'
+    }else{
+        let course = dateJson.getStatusCourseDs(statusCourse)
+        if(course){
+            statusCode = 200
+            courseStatusJson = course
+        }else{
+            statusCode = 400
+            courseStatusJson = 'Status não localizado.'
+        }
+    }
+
+    response.status(statusCode)
+    response.json(courseStatusJson)
+})
+
+//EndPoint para listar todos os alunos de programação naquele ano espeficico 
+app.get('/v1/lion-school/alunos/curso/ds/ano-finalizacao', cors(), async function(request,response,next){
+    let year = request.query.ano
+    let studentsJson = {}
+    let statusCode
+
+    if(year == undefined || year == '' || isNaN(year)){
+        statusCode = 400
+        studentsJson.message = 'Não foi possivel localizar os alunos de determinada data, pois a data não foi informada de forma certa'
+    }else{
+        let students = dateJson.getConclusionCourseDs(year)
+        if(students){
+            statusCode = 200
+            studentsJson = students
+        }else{
+            statusCode = 400
+            studentsJson.message = 'Alunos não localizados, tente novamente'
+        }
+
+    }
+
+    response.status(statusCode)
+    response.json(studentsJson)
+})
 app.listen(8080, function () {
     console.log('Servidor Aguardando requisições')
 })
