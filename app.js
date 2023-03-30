@@ -38,9 +38,9 @@ app.get('/v1/lion-school/cursos', cors(), async function (request, response, nex
     response.json(infCourseJson)
 })
 
-//EndPoint para listar todos os alunos matriculados na escola e os dados
-app.get('/v1/lion-school/alunos', cors(), async function (request, response, next) {
-    let infStudents = dateJson.getAllStudentsMatriculate()
+//EndPoint para listar as informações todos os alunos matriculados na escola e os dados
+app.get('/v1/lion-school/informacoes/alunos', cors(), async function (request, response, next) {
+    let infStudents = dateJson.getInfoAllStudentsMatriculate()
     let infStudentsJson = {}
     let statusCode
 
@@ -55,6 +55,22 @@ app.get('/v1/lion-school/alunos', cors(), async function (request, response, nex
     response.json(infStudentsJson)
 })
 
+//EndPoint responsavel por recuperar uma lista com o nome e a foto de todos os estudantes matriculados na escola
+app.get('/v1/lion-school/alunos', cors(), async function(request, response,next){
+    let infStudents = dateJson.getNameImageAllStudents()
+    let infStudentsJson = {}
+    let statusCode
+
+    if(infStudents){
+        infStudentsJson = infStudents
+        statusCode = 200
+    }else{
+        statusCode = 400
+        infStudentsJson.message = "Erro, não foi localizado nenhuma informação de alunos"
+    }
+    response.status(statusCode)
+    response.json(infStudentsJson)
+})
 //EndPoint para listar os dados do aluno de acordo com a matricula
 app.get('/v1/lion-school/aluno', cors(), async function (request, response, next) {
     let matriculate = request.query.matricula
@@ -66,7 +82,7 @@ app.get('/v1/lion-school/aluno', cors(), async function (request, response, next
         statusCode = 400
         infStudentJson.message = 'Não é possivel processar a requisição pois a matricula não foi informada de forma correta, tente novamente.'
     }else{
-        let student = dateJson.getStudentMatriculate(matriculate)
+        let student = dateJson.getStudentMatriculation(matriculate)
         if(student){
             statusCode = 200
             infStudentJson = student
@@ -78,6 +94,58 @@ app.get('/v1/lion-school/aluno', cors(), async function (request, response, next
     response.status(statusCode)
     response.json(infStudentJson)
 })
+
+//EndPoint para listar todos os alunos de um curso especifico
+app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response, next){
+    let nameCourse = request.query.curso 
+    let studentsCourseJson = {}
+    let statusCode
+    
+    if(nameCourse == '' || nameCourse == undefined || !isNaN(nameCourse)){
+        statusCode = 400
+        studentsCourseJson.message = 'Não foi possivel processar a requisição pois o nome do curso não foi informado de forma certa, tente novamente'
+    }else{
+        let courseEspecific = dateJson.getStudentsCourseEspecific(nameCourse)
+
+        if(courseEspecific){
+            statusCode = 200
+            studentsCourseJson = courseEspecific
+        }else{
+            statusCode = 400
+            studentsCourseJson.message = 'Curso não encontrado, Erro 404'
+        }
+    }
+
+    response.status(statusCode)
+    response.json(studentsCourseJson)
+})
+
+//EndPoint para listar todos os alunos de um status especifico
+app.get('/v1/lion-school/alunos/status', cors(), async function(request, response, next){
+    let statusStudent = request.query.status 
+    let statusStudentsJson = {}
+    let statusCode
+
+    if(statusStudent == '' || statusStudent == undefined || !isNaN(statusStudent)){
+        statusCode = 400
+        statusJson.message = 'Não foi possivel processar a requisição pois o status do aluno não foi informado de forma certa, tente novamente'
+    }else{
+        let statusEspecific = dateJson.getStudentsStatusEspecific(statusStudent)
+
+        if(statusEspecific){
+            statusCode = 200
+            statusStudentsJson = statusEspecific
+        }else{
+            statusCode = 400
+            statusStudentsJson.message = 'Curso não encontrado, Erro 404'
+        }
+    }
+
+    response.status(statusCode)
+    response.json(statusStudentsJson)
+})
+
+
 app.listen(8080, function () {
     console.log('Servidor Aguardando requisições')
 })

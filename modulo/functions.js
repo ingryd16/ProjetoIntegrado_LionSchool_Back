@@ -38,7 +38,7 @@ const getInfoCourses = function () {
 //console.log(getInfoCourses())
 
 //Função responsavel por recuperar uma lista de todos os dados dos alunos matriculados na escola
-const getAllStudentsMatriculate = function () {
+const getInfoAllStudentsMatriculate = function () {
     const studentsJson = {}
     const studentsArray = []
 
@@ -53,7 +53,7 @@ const getAllStudentsMatriculate = function () {
             sexo: infStudents.sexo
         }
 
-        infStudents.curso.forEach(function (infCourse){
+        infStudents.curso.forEach(function (infCourse) {
             const infCourseArray = []
             const infCourseJson = {
                 nome: infCourse.nome,
@@ -67,7 +67,7 @@ const getAllStudentsMatriculate = function () {
             infStudentJson.status = infStudents.status
 
             const infDisciplineArray = []
-            infCourse.disciplinas.forEach(function(infDiscipline){
+            infCourse.disciplinas.forEach(function (infDiscipline) {
                 const infDisciplineJson = {
                     nome: infDiscipline.nome,
                     carga: infDiscipline.carga,
@@ -81,26 +81,49 @@ const getAllStudentsMatriculate = function () {
         studentsArray.push(infStudentJson)
     })
     studentsJson.alunos = studentsArray
-    
-    if(status){
+
+    if (status) {
         return studentsJson
-    }else{
+    } else {
         return status
     }
 }
-//console.log(getAllStudentsMatriculate())
+//console.log(getInfoAllStudentsMatriculate())
 
-const getStudentMatriculate = function ($matriculate){
+const getNameImageAllStudents = function () {
+    const studentsJson = {}
+    const studentsArray = []
+    let status = false
+
+    students.forEach(function ($infStudents) {
+        status = true
+        let infStudent = {}
+        infStudent.foto = $infStudents.foto
+        infStudent.nome = $infStudents.nome
+        studentsArray.push(infStudent)
+    })
+
+    studentsJson.alunos = studentsArray
+
+    if (status) {
+        return studentsJson
+    } else {
+        return status
+    }
+}
+//console.log(getNameImageAllStudents())
+
+const getStudentMatriculation = function ($matriculate) {
     const student = $matriculate
     const dateStudentJson = {}
     const dateStudentArray = []
     const infDisciplineArray = []
     const infCourseArray = []
-    
+
     let status = false
 
-    students.forEach(function(matriculate){
-        if(student == matriculate.matricula){
+    students.forEach(function (matriculate) {
+        if (student == matriculate.matricula) {
             status = true
             let allDateStudent = {
                 foto: matriculate.foto,
@@ -108,7 +131,7 @@ const getStudentMatriculate = function ($matriculate){
                 matricula: matriculate.matricula,
                 sexo: matriculate.sexo
             }
-            matriculate.curso.forEach(function(dateCourse){
+            matriculate.curso.forEach(function (dateCourse) {
                 let infCourseJson = {
                     nome: dateCourse.nome,
                     sigla: dateCourse.sigla,
@@ -116,7 +139,7 @@ const getStudentMatriculate = function ($matriculate){
                     carga: dateCourse.carga,
                     conclusao: dateCourse.conclusao
                 }
-                dateCourse.disciplinas.forEach(function(discipline){
+                dateCourse.disciplinas.forEach(function (discipline) {
                     let infDiscipline = {
                         nome: discipline.nome,
                         carga: discipline.carga,
@@ -134,16 +157,127 @@ const getStudentMatriculate = function ($matriculate){
         }
     })
     dateStudentJson.aluno = dateStudentArray
-    if(status){
+    if (status) {
         return dateStudentJson
-    }else{
+    } else {
         return status
     }
 }
-
 //console.log(getStudentMatriculate('20151001007'))
+
+const getStudentsCourseEspecific = function ($siglaCourse) {
+    const allStudentsJson = {}
+    const allStudentsArray = []
+    let status = false
+
+    students.forEach(function ($course) {
+
+        $course.curso.forEach(function ($date) {
+            if ($siglaCourse.toUpperCase() == $date.sigla.toUpperCase()) {
+                status = true
+                infStudent = {
+                    foto: $course.foto,
+                    nome: $course.nome,
+                    matricula: $course.matricula,
+                    sexo: $course.sexo
+                }
+                $course.curso.forEach(function ($dateCourse) {
+                    infCourseArray = []
+                    infCourse = {
+                        nome: $dateCourse.nome,
+                        sigla: $dateCourse.sigla,
+                        icone: $dateCourse.icone,
+                        carga: $dateCourse.carga,
+                        conclusao: $dateCourse.conclusao
+                    }
+
+                    infDisciplineArray = []
+                    $dateCourse.disciplinas.forEach(function ($dateDiscipline) {
+                        const infDisciplineJson = {} //
+                        infDisciplineJson.nome = $dateDiscipline.nome,
+                            infDisciplineJson.carga = $dateDiscipline.carga,
+                            infDisciplineJson.media = $dateDiscipline.media,
+                            infDisciplineJson.status = $dateDiscipline.status
+
+                        infDisciplineArray.push(infDisciplineJson)
+                    })
+                    infCourse.disciplinas = infDisciplineArray
+                    infCourseArray.push(infCourse)
+                    infStudent.curso = infCourseArray
+                    infStudent.status = $course.status
+                })
+                allStudentsArray.push(infStudent)
+            }
+        })
+    })
+
+
+    allStudentsJson.alunos = allStudentsArray
+    if (status) {
+        return allStudentsJson
+    } else {
+        return status
+    }
+}
+//getStudentsCourseEspecific('ds')
+
+const getStudentsStatusEspecific = function ($status) {
+    const allStudentsJson = {}
+    const allStudentsArray = []
+    let status = false
+
+    students.forEach(function ($course) {
+        if ($status.toUpperCase() == $course.status.toUpperCase()) {
+                status = true
+                infStudent = {
+                    foto: $course.foto,
+                    nome: $course.nome,
+                    matricula: $course.matricula,
+                    sexo: $course.sexo
+                }
+                $course.curso.forEach(function ($dateCourse) {
+                    infCourseArray = []
+                    infCourse = {
+                        nome: $dateCourse.nome,
+                        sigla: $dateCourse.sigla,
+                        icone: $dateCourse.icone,
+                        carga: $dateCourse.carga,
+                        conclusao: $dateCourse.conclusao
+                    }
+
+                    infDisciplineArray = []
+                    $dateCourse.disciplinas.forEach(function ($dateDiscipline) {
+                        const infDisciplineJson = {} //
+                        infDisciplineJson.nome = $dateDiscipline.nome,
+                            infDisciplineJson.carga = $dateDiscipline.carga,
+                            infDisciplineJson.media = $dateDiscipline.media,
+                            infDisciplineJson.status = $dateDiscipline.status
+
+                        infDisciplineArray.push(infDisciplineJson)
+                    })
+                    infCourse.disciplinas = infDisciplineArray
+                    infCourseArray.push(infCourse)
+                    infStudent.curso = infCourseArray
+                    infStudent.status = $course.status
+                })
+                allStudentsArray.push(infStudent)
+        }
+    })
+
+
+    allStudentsJson.alunos = allStudentsArray
+    if (status) {
+        return allStudentsJson
+    } else {
+        return status
+    }
+}
+//console.log(getStudentsStatusEspecific('Finalizado'))
 module.exports = {
     getInfoCourses,
-    getAllStudentsMatriculate,
-    getStudentMatriculate
+    getInfoAllStudentsMatriculate,
+    getNameImageAllStudents,
+    getStudentMatriculation,
+    getStudentsCourseEspecific,
+    getStudentsStatusEspecific
 }
