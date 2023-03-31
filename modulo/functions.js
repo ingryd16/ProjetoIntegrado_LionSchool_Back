@@ -324,6 +324,7 @@ const studentSelectedInfGrades = function($nameStudent){
 }
 //studentSelectedInfGrades('aline de Almeida campos')
 
+
 //Retonarna os alunos com o estado Finalizado ou Cursando do curso de Desenvolvimento
 const getStatusCourseDs = function($status){
     const courseJson = {}
@@ -351,6 +352,7 @@ const getStatusCourseDs = function($status){
     }
 }
 //console.log(getStatusCourse("Cursando"))
+
 
 //Retorna os alunos que concluiram o curso programação naquele ano
 const getConclusionCourseDs = function($year){
@@ -380,6 +382,7 @@ const getConclusionCourseDs = function($year){
 }
 //console.log(getYearCourse('2022'))
 
+
 //Retonarna os alunos com o estado Finalizado ou Cursando do curso de Redes
 const getStatusCourseRDS = function($status){
     const courseJson = {}
@@ -388,7 +391,7 @@ const getStatusCourseRDS = function($status){
 
     students.forEach(function(students){
         students.curso.forEach(function(course){
-            if($status != undefined && students.status == $status && course.sigla.toUpperCase() == 'RDS'){
+            if($status != undefined && students.status.toUpperCase() == $status.toUpperCase() && course.sigla.toUpperCase() == 'RDS'){
                 status = true
                 const studentJson = {
                     nome: students.nome,
@@ -407,6 +410,7 @@ const getStatusCourseRDS = function($status){
     }
 }
 //console.log(getStatusCourseRDS("Cursando"))
+
 
 //Retorna os alunos que concluiram o curso Redes naquele ano
 const getConclusionCourseRDS = function($year){
