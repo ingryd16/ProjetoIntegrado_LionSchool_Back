@@ -22,7 +22,8 @@ app.use((request, response, next) => {
 })
 
 //EndPoint para listar todos os cursos da escola
-app.get('/v1/lion-school/cursos', cors(), async function (request, response, next) {
+//app.get('/v1/lion-school/cursos', cors(), async function (request, response, next) {
+app.get('https://lionschool.onrender.com/v1/lion-school/cursos', cors(), async function (request, response, next) {
     let infCourses = dateJson.getInfoCourses()
     let infCourseJson = {}
     let statusCode
