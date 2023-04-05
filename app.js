@@ -23,7 +23,7 @@ app.use((request, response, next) => {
 
 //EndPoint para listar todos os cursos da escola
 //app.get('/v1/lion-school/cursos', cors(), async function (request, response, next) {
-app.get('/v1/lion-school/cursos', cors(), async function (request, response, next) {
+app.get('https://lionschool.onrender.com/v1/lion-school/cursos', cors(), async function (request, response, next) {
     let infCourses = dateJson.getInfoCourses()
     let infCourseJson = {}
     let statusCode
@@ -40,7 +40,8 @@ app.get('/v1/lion-school/cursos', cors(), async function (request, response, nex
 })
 
 //EndPoint para listar as informações todos os alunos matriculados na escola e os dados
-app.get('/v1/lion-school/informacoes/alunos', cors(), async function (request, response, next) {
+//app.get('/v1/lion-school/informacoes/alunos', cors(), async function (request, response, next) {
+app.get('https://lionschool.onrender.com/v1/lion-school/informacoes/alunos', cors(), async function (request, response, next) {
     let infStudents = dateJson.getInfoAllStudentsMatriculate()
     let infStudentsJson = {}
     let statusCode
@@ -57,7 +58,8 @@ app.get('/v1/lion-school/informacoes/alunos', cors(), async function (request, r
 })
 
 //EndPoint responsavel por recuperar uma lista com o nome e a foto de todos os estudantes matriculados na escola
-app.get('/v1/lion-school/alunos', cors(), async function(request, response,next){
+//app.get('/v1/lion-school/alunos', cors(), async function(request, response,next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos', cors(), async function(request, response,next){
     let infStudents = dateJson.getNameImageAllStudents()
     let infStudentsJson = {}
     let statusCode
@@ -73,7 +75,8 @@ app.get('/v1/lion-school/alunos', cors(), async function(request, response,next)
     response.json(infStudentsJson)
 })
 //EndPoint para listar os dados do aluno de acordo com a matricula
-app.get('/v1/lion-school/aluno', cors(), async function (request, response, next) {
+//app.get('/v1/lion-school/aluno', cors(), async function (request, response, next) {
+app.get('https://lionschool.onrender.com/v1/lion-school/aluno', cors(), async function (request, response, next) {
     let matriculate = request.query.matricula
     let infStudentJson = {}
     let statusCode
@@ -97,7 +100,8 @@ app.get('/v1/lion-school/aluno', cors(), async function (request, response, next
 })
 
 //EndPoint para listar todos os alunos de um curso especifico
-app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response, next){
+//app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response, next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/curso', cors(), async function(request, response, next){
     let nameCourse = request.query.curso 
     let studentsCourseJson = {}
     let statusCode
@@ -122,7 +126,8 @@ app.get('/v1/lion-school/alunos/curso', cors(), async function(request, response
 })
 
 //EndPoint para listar todos os alunos de um status especifico
-app.get('/v1/lion-school/alunos/status', cors(), async function(request, response, next){
+//app.get('/v1/lion-school/alunos/status', cors(), async function(request, response, next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/status', cors(), async function(request, response, next){
     let statusStudent = request.query.status 
     let statusStudentsJson = {}
     let statusCode
@@ -147,7 +152,8 @@ app.get('/v1/lion-school/alunos/status', cors(), async function(request, respons
 })
 
 //EndPoint para listar as Informações referentes a nota do aluno em determinadas matérias
-app.get('/v1/lion-school/aluno/notas', cors(), async function(request, response, next){
+//app.get('/v1/lion-school/aluno/notas', cors(), async function(request, response, next){
+app.get('https://lionschool.onrender.com/v1/lion-school/aluno/notas', cors(), async function(request, response, next){
     let nameStudent = request.query.nome
     let gradesStudent = {}
     let statusCode
@@ -170,7 +176,8 @@ app.get('/v1/lion-school/aluno/notas', cors(), async function(request, response,
 })
 
 //EndPoint retorna os alunos que estao cursando ou finalizarão o curso de Programming
-app.get('/v1/lion-school/alunos/status/ds', cors(), async function(request, response, next){
+//app.get('/v1/lion-school/alunos/status/ds', cors(), async function(request, response, next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/status/ds', cors(), async function(request, response, next){
     let statusCourse = request.query.status
     let courseStatusJson = {}
     let statusCode 
@@ -194,7 +201,8 @@ app.get('/v1/lion-school/alunos/status/ds', cors(), async function(request, resp
 })
 
 //EndPoint para listar todos os alunos de programação deacordo com o ano espeficico 
-app.get('/v1/lion-school/alunos/curso/ds/ano-finalizacao', cors(), async function(request,response,next){
+//app.get('/v1/lion-school/alunos/curso/ds/ano-finalizacao', cors(), async function(request,response,next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/curso/ds/ano-finalizacao', cors(), async function(request,response,next){
     let year = request.query.ano
     let studentsJson = {}
     let statusCode
@@ -219,7 +227,8 @@ app.get('/v1/lion-school/alunos/curso/ds/ano-finalizacao', cors(), async functio
 })
 
 //EndPoint retorna os alunos que estao cursando ou finalizarão o curso de Redes
-app.get('/v1/lion-school/alunos/status/rds', cors(), async function(request, response, next){
+//app.get('/v1/lion-school/alunos/status/rds', cors(), async function(request, response, next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/status/rds', cors(), async function(request, response, next){
     let statusCourse = request.query.status
     let courseStatusJson = {}
     let statusCode 
@@ -243,7 +252,8 @@ app.get('/v1/lion-school/alunos/status/rds', cors(), async function(request, res
 })
 
 //EndPoint para listar todos os alunos de redes deacordo com o ano espeficico 
-app.get('/v1/lion-school/alunos/curso/rds/ano-finalizacao', cors(), async function(request,response,next){
+//app.get('/v1/lion-school/alunos/curso/rds/ano-finalizacao', cors(), async function(request,response,next){
+app.get('https://lionschool.onrender.com/v1/lion-school/alunos/curso/rds/ano-finalizacao', cors(), async function(request,response,next){
     let year = request.query.ano
     let studentsJson = {}
     let statusCode
