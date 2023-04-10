@@ -366,7 +366,8 @@ const getConclusionCourseDs = function($year){
                 status = true
                 const studentJson = {
                     nome: students.nome,
-                    foto: students.foto
+                    foto: students.foto,
+                    status: students.status
                 }
                 courseArray.push(studentJson)
             }
@@ -380,7 +381,7 @@ const getConclusionCourseDs = function($year){
         return status
     }
 }
-//console.log(getYearCourse('2022'))
+//console.log(getConclusionCourseDs('2022'))
 
 
 //Retonarna os alunos com o estado Finalizado ou Cursando do curso de Redes
@@ -424,7 +425,8 @@ const getConclusionCourseRDS = function($year){
                 status = true
                 const studentJson = {
                     nome: students.nome,
-                    foto: students.foto
+                    foto: students.foto,
+                    status: students.status
                 }
                 courseArray.push(studentJson)
             }
