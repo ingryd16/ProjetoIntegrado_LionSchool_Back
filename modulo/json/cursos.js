@@ -2,13 +2,13 @@ var cursos = [
     {
         "nome"  :   "001 - Técnico em Desenvolvimento de Sistemas",
         "sigla" :   "DS",
-        "icone" :   "./img/DS.png",
+        "icone" :   "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/DS.png?raw=true",
         "carga" :   "1200",
     },
     {
         "nome"  :   "002 - Técnico em Redes de Computadores",
         "sigla" :   "RDS",
-        "icone" :   "./img/RDS.png",
+        "icone" :   "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/RDS.png?raw=true",
         "carga" :   "1200"
     }
 ];
