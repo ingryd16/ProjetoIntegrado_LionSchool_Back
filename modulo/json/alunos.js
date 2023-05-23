@@ -1,7 +1,7 @@
 var alunos = [
 
     {
-        "foto": "./img/image.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina1.png?raw=true",
         "nome": "Aline de Almeida Campos",
         "matricula": "20151001001",
         "sexo": "F",
@@ -55,7 +55,7 @@ var alunos = [
         "status": "Cursando"
     },
     {
-        "foto": "./img/menina1.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina2.png?raw=true",
         "nome": "Ana Carolina Vasconcelos Barreto",
         "matricula": "20151001002",
         "sexo": "F",
@@ -109,7 +109,7 @@ var alunos = [
         "status": "Cursando"
     },
     {
-        "foto": "./img/menino1.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menino1.png?raw=true",
         "nome": "ANDERSON GERÔNCIO SOUZA SILVA",
         "matricula": "20151001004",
         "sexo": "M",
@@ -163,7 +163,7 @@ var alunos = [
         "status": "Cursando"
     },
     {
-        "foto": "./img/menino2.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menino2.png?raw=true",
         "nome": "Aristóteles da Silva Lima",
         "matricula": "20151001007",
         "sexo": "M",
@@ -235,7 +235,7 @@ var alunos = [
         "status": "Finalizado"
     },
     {
-        "foto": "./img/menina3.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina4.png?raw=true",
         "nome": "Gabriella Macedo Paiva",
         "matricula": "20151001014",
         "sexo": "F",
@@ -307,7 +307,7 @@ var alunos = [
         "status": "Finalizado"
     },
     {
-        "foto": "./img/menina4.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina6.png?raw=true",
         "nome": "Debora Alves da Silva",
         "matricula": "20151001012",
         "sexo": "F",
@@ -379,7 +379,7 @@ var alunos = [
         "status": "Finalizado"
     },
     {
-        "foto": "./img/menina5.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina4.png?raw=true",
         "nome": "Heloisa Santos Araujo",
         "matricula": "20151001017",
         "sexo": "F",
@@ -451,7 +451,7 @@ var alunos = [
         "status": "Finalizado"
     },
     {
-        "foto": "./img/menina6.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina5.png?raw=true",
         "nome": "Ingrid Paloma da Costa Porto",
         "matricula": "20151001018",
         "sexo": "F",
@@ -523,7 +523,7 @@ var alunos = [
         "status": "Finalizado"
     },
     {
-        "foto": "./img/menina1.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menina6.png?raw=true",
         "nome": "HÉLIDA BENTO DE OLIVEIRA LINS",
         "matricula": "20151001016",
         "sexo": "F",
@@ -577,7 +577,7 @@ var alunos = [
         "status": "Cursando"
     },
     {
-        "foto": "./img/menino3.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menino4.png?raw=true",
         "nome": "Isaasc de Sousa Araújo",
         "matricula": "20151001019",
         "sexo": "M",
@@ -631,7 +631,7 @@ var alunos = [
         "status": "Cursando"
     },
     {
-        "foto": "./img/menino2.png",
+        "foto": "https://github.com/GustavoHenriqueProjects/ProjetoIntegrado_LionSchool_Front_New/blob/main/img/menino1.png?raw=true",
         "nome": "José Matheus da Silva Miranda",
         "matricula": "20151001024",
         "sexo": "M",
