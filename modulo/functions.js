@@ -337,7 +337,9 @@ const getStatusCourseDs = function($status){
                 status = true
                 const studentJson = {
                     nome: students.nome,
-                    foto: students.foto
+                    foto: students.foto,
+                    sexo: students.sexo,
+                    matricula: students.matricula
                 }
                 courseArray.push(studentJson)
             }
@@ -367,6 +369,8 @@ const getConclusionCourseDs = function($year){
                 const studentJson = {
                     nome: students.nome,
                     foto: students.foto,
+                    sexo: students.sexo,
+                    matricula: students.matricula,
                     status: students.status
                 }
                 courseArray.push(studentJson)
@@ -396,7 +400,9 @@ const getStatusCourseRDS = function($status){
                 status = true
                 const studentJson = {
                     nome: students.nome,
-                    foto: students.foto
+                    foto: students.foto,
+                    sexo: students.sexo,
+                    matricula: students.matricula
                 }
                 courseArray.push(studentJson)
             }
@@ -426,6 +432,8 @@ const getConclusionCourseRDS = function($year){
                 const studentJson = {
                     nome: students.nome,
                     foto: students.foto,
+                    sexo: students.sexo,
+                    matricula: students.matricula,
                     status: students.status
                 }
                 courseArray.push(studentJson)
